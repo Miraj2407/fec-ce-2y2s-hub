@@ -393,6 +393,48 @@
     { code: "Math 401", keys: ["math", "math 401", "fourier", "harmonic", "3d", "3-d", "geometry", "plane", "straight line", "ম্যাথ", "ফুরিয়ার"] },
   ];
 
+  const YOUTUBE_SUGGESTIONS = {
+    "CE 401": [
+      { label: "Numerical Methods (Newton-Raphson, Interpolation, Integration)", q: "Numerical Methods Engineering lecture Newton Raphson Interpolation" },
+      { label: "Curve Fitting & Matrix Inversion Tutorial", q: "Numerical Methods Curve Fitting Gauss Elimination Matrix Inversion" },
+      { label: "Basic C Programming for Beginners (Bangla)", q: "C Programming Bangla full course Anisul Islam Tamim Shahriar" }
+    ],
+    "CE 402": [
+      { label: "Mohr's Circle & Combined Stress", q: "Mechanics of Solids Mohr's Circle Combined Stress Civil Engineering" },
+      { label: "Beam Deflection (Double Integration, Moment Area, Conjugate Beam)", q: "Deflection of Beams Conjugate Beam Moment Area Method" },
+      { label: "Torsion, Helical Spring & Column Buckling", q: "Mechanics of Materials Torsion Helical Spring Column Buckling Euler" }
+    ],
+    "CE 403": [
+      { label: "Building Estimation & Quantity Surveying (Excel + AutoCAD)", q: "Quantity Surveying Building Estimation Civil Engineering" },
+      { label: "Plaster, Paint, Brickwork & Slab Rod Estimation", q: "Plaster Paint Brickwork Concrete Estimation Civil Engineering" }
+    ],
+    "CE 404": [
+      { label: "Fluid Statics, Hydrostatic Force & Pressure Measurement", q: "Fluid Mechanics Hydrostatic Force Pressure Manometer" },
+      { label: "Bernoulli's Equation, Kinematics & Pipe Flow Problems", q: "Fluid Mechanics Bernoulli Equation Pipe Flow Darcy Weisbach" },
+      { label: "Orifice, Mouthpiece, Notch & Weir", q: "Fluid Mechanics Orifice Mouthpiece Notch and Weir" }
+    ],
+    "CE 405": [
+      { label: "Hydraulic Bench, V-Notch & Rectangular Weir Lab", q: "Fluid Mechanics Lab V Notch Rectangular Weir Orifice Experiment" },
+      { label: "Tilting Flow Channel Experiment", q: "Tilting Flume Open Channel Flow Fluid Mechanics Lab" }
+    ],
+    "CSE 401": [
+      { label: "C Programming Lab Problems (Loops, Conditions, GCD/LCM)", q: "C Programming Lab GCD LCM Prime Leap Year Bangla" },
+      { label: "C Programming Viva Preparation", q: "C Programming Viva Questions and Answers" }
+    ],
+    "HUM 401": [
+      { label: "Accounting Equation & Recording Process (Journal/Ledger)", q: "Principles of Accounting Recording Process Weygandt Kimmel Kieso" },
+      { label: "CVP Analysis, Overhead & Cost Sheet", q: "Cost Volume Profit CVP Analysis Cost Sheet Overhead Accounting" },
+      { label: "Capital Budgeting (NPV, IRR, Payback Period)", q: "Capital Budgeting NPV IRR Payback Period Accounting" }
+    ],
+    "Math 401": [
+      { label: "3D Co-ordinate Geometry (Plane, Straight Line, Sphere)", q: "3D Coordinate Geometry Plane Straight Line Sphere Engineering Math" },
+      { label: "Fourier Series & Fourier Integral", q: "Fourier Series Fourier Integral Engineering Mathematics" },
+      { label: "Harmonic Functions & Laplace Equation", q: "Harmonic Functions Laplace Equation Engineering Mathematics" }
+    ]
+  };
+
+  const ytSearchUrl = (q) => `https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`;
+
   const collectSectionFiles = (sec) => {
     const out = [];
     sec.files.forEach((f) => out.push({ ...f, folder: sec.code }));
@@ -468,12 +510,29 @@
       `;
     };
 
+    const ytList = (YOUTUBE_SUGGESTIONS[sec.code] || []).map((yt) => ({
+      name: yt.label,
+      url: ytSearchUrl(yt.q),
+    }));
+
+    const ytHtml = ytList.length
+      ? `
+        <div class="chat-plan-group">
+          <div class="chat-plan-title">🎥 ৫. ইউটিউব ভিডিও লেকচার (YouTube)</div>
+          <div class="chat-plan-links">
+            ${ytList.map((y) => `<a class="chat-plan-link" href="${y.url}" target="_blank" rel="noopener noreferrer" title="${y.name}"><span>▶ ${y.name}</span><span>↗</span></a>`).join("")}
+          </div>
+        </div>
+      `
+      : "";
+
     renderBotHtml(`
       <div><strong>${sec.code}: ${sec.title}</strong>-এর পরীক্ষার জন্য সাজানো স্টাডি প্ল্যান:</div>
       ${groupHtml("🎯 ১. সাজেশন ও গুরুত্বপূর্ণ টপিক", suggestions)}
       ${groupHtml("📝 ২. বিগত বছরের প্রশ্ন ও সলভ (PYQ / CT)", combinedPyqs)}
       ${groupHtml("📒 ৩. সেরা হ্যান্ডনোট ও টিচার লেকচার", notes)}
       ${groupHtml("📚 ৪. রেফারেন্স বই ও ল্যাব ম্যাটেরিয়াল", books)}
+      ${ytHtml}
       <div class="chat-quick-chips">
         <button class="chat-chip chat-open-modal" type="button">সব ফাইল দেখুন (${allFiles.length})</button>
         <a class="chat-chip" style="text-decoration:none;" href="${driveFolderUrl(sec.id)}" target="_blank" rel="noopener noreferrer">Drive ফোল্ডার ↗</a>
@@ -536,6 +595,12 @@
         <div class="chat-plan-group">
           <div class="chat-plan-links">
             ${directMatches.map((f) => `<a class="chat-plan-link" href="${driveFileUrl(f.id)}" target="_blank" rel="noopener noreferrer"><span>${f.name}</span><span>↗</span></a>`).join("")}
+          </div>
+        </div>
+        <div class="chat-plan-group">
+          <div class="chat-plan-title">🎥 এই টপিকের ইউটিউব ভিডিও</div>
+          <div class="chat-plan-links">
+            <a class="chat-plan-link" href="${ytSearchUrl(q + ' Civil Engineering lecture')}" target="_blank" rel="noopener noreferrer"><span>▶ "${q}" — YouTube-এ ভিডিও দেখুন</span><span>↗</span></a>
           </div>
         </div>
       `);
