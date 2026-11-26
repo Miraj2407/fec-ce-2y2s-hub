@@ -37,6 +37,35 @@
   document.getElementById("statFolders").textContent = data.meta.totalFolders;
   document.getElementById("statFiles").textContent = `${data.meta.totalFiles}+`;
 
+  // Render Latest Drive Updates
+  const lastSyncedBadge = document.getElementById("lastSyncedBadge");
+  if (lastSyncedBadge && data.meta.lastSyncedAt) {
+    lastSyncedBadge.textContent = `Last synced: ${data.meta.lastSyncedAt}`;
+  }
+  const latestGrid = document.getElementById("latestGrid");
+  if (latestGrid && Array.isArray(data.latestUpdates)) {
+    data.latestUpdates.forEach((item) => {
+      const a = document.createElement("a");
+      a.className = "latest-card";
+      a.href = item.type === "folder" ? driveFolderUrl(item.id) : driveFileUrl(item.id);
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      const badge = item.type === "folder" ? "FOLDER" : getExt(item.name);
+      a.innerHTML = `
+        <div class="latest-card-top">
+          <span class="latest-course-tag">${item.course}</span>
+          <span class="latest-date">${item.date}</span>
+        </div>
+        <div class="latest-name" title="${item.name}">${item.name}</div>
+        <div class="latest-card-top">
+          <span class="ext-badge">${badge}</span>
+          <span class="latest-date">Open in Drive ↗</span>
+        </div>
+      `;
+      latestGrid.appendChild(a);
+    });
+  }
+
   // Split sections into Courses, PYQ, Extra
   const courseSections = data.sections.filter((s) => s.type === "Theory" || s.type === "Sessional");
   const pyqSections = data.sections.filter((s) => s.type === "PYQ");

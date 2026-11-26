@@ -7,8 +7,81 @@ window.DRIVE_DATA = {
     "rootFolderId": "1kZ17fAFq3K7T8FaXnsS4UIlYzO06OWm_",
     "rootFolderUrl": "https://drive.google.com/drive/folders/1kZ17fAFq3K7T8FaXnsS4UIlYzO06OWm_",
     "totalFiles": 800,
-    "totalFolders": 69
+    "totalFolders": 69,
+    "lastSyncedAt": "2026-11-27 01:37 +06:00"
   },
+  "latestUpdates": [
+    {
+      "name": "Report (12/11/26) — Plaster, Paint & Estimation Submissions (89 files)",
+      "id": "1kdEbHN-FsLRzaNdkca6IcGkPVOYYgw5p",
+      "type": "folder",
+      "course": "CE 403",
+      "date": "Nov 2026"
+    },
+    {
+      "name": "Screenshot 2026-03-26 092209.png",
+      "id": "1ZLuPJQgsLRRvMXkPQZRwyqZZuAIBjWqi",
+      "type": "file",
+      "course": "CE 401",
+      "date": "Mar 26, 2026"
+    },
+    {
+      "name": "LAMINAR, TURBULENT AND PIPE PROBLEMS.pdf",
+      "id": "1y9XtlJ_hW5AHpnNfQAi8tMNUPP-u4iGs",
+      "type": "file",
+      "course": "Root / CE 404",
+      "date": "Dec 30, 2024"
+    },
+    {
+      "name": "LAMINAR, TURBULENT AND PIPE PROBLEMS.pptx",
+      "id": "1TwNN2ZW3jwG7flYYBMRuSDsthaCBht2U",
+      "type": "file",
+      "course": "Root / CE 404",
+      "date": "Dec 30, 2024"
+    },
+    {
+      "name": "numerical qn analysis doubts.pdf",
+      "id": "1c7Hc7-gtt7QEPoyEmbir4HZGy0LOhoDc",
+      "type": "file",
+      "course": "Root / CE 401",
+      "date": "Dec 22, 2024"
+    },
+    {
+      "name": "Conjugate Beam method .pdf",
+      "id": "14qRk1liie30X4cVJEuBaJuuECYh2F9Wk",
+      "type": "file",
+      "course": "Root / CE 402",
+      "date": "Oct 30, 2024"
+    },
+    {
+      "name": "CamScanner 09-24-2024 19.51 (1).pdf",
+      "id": "1--SQoYnwdVMdrQfYDXLPaqrnEG8vF1-x",
+      "type": "file",
+      "course": "PYQ Bank",
+      "date": "Sep 24, 2024"
+    },
+    {
+      "name": "Fec Bec CT QUES 2024.pdf",
+      "id": "1viQNUTIFoS0GJuvx2aWgCagA6zBWlY8B",
+      "type": "file",
+      "course": "PYQ Bank › CT",
+      "date": "2024"
+    },
+    {
+      "name": "2024.pdf",
+      "id": "1SYmocdU8s6f3wH5iiY4m_We7zNAn1dnW",
+      "type": "file",
+      "course": "PYQ Bank › Year-wise",
+      "date": "2024"
+    },
+    {
+      "name": "Ct question BEC 2-2 (2024).pdf",
+      "id": "1R8oQaUqxB6olh2hjvgVjf7BGlab5E6jJ",
+      "type": "file",
+      "course": "zExtra › CT",
+      "date": "2024"
+    }
+  ],
   "rootFiles": [
     {
       "name": "LAMINAR, TURBULENT AND PIPE PROBLEMS.pdf",
