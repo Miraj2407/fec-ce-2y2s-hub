@@ -171,6 +171,40 @@
     </div>
   </div>
 
+  <!-- AI Study Assistant Chatbot -->
+  <button id="chatFab" class="chat-fab" type="button" aria-label="Open AI Study Assistant">
+    <span class="chat-fab-icon">🤖</span>
+    <span class="chat-fab-label">কি পড়ব? Ask AI</span>
+  </button>
+
+  <section id="chatWidget" class="chat-widget hidden" aria-label="AI Study Assistant">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <span class="chat-avatar">🤖</span>
+        <div>
+          <strong>FEC Study AI</strong>
+          <small>Exam Prep &amp; Material Finder</small>
+        </div>
+      </div>
+      <div class="chat-header-actions">
+        <button id="chatClear" class="chat-icon-btn" type="button" title="Reset chat">↺</button>
+        <button id="chatClose" class="chat-icon-btn" type="button" title="Close chat">✕</button>
+      </div>
+    </div>
+
+    <div id="chatMessages" class="chat-messages"></div>
+
+    <form id="chatForm" class="chat-input-bar">
+      <input
+        id="chatInput"
+        type="text"
+        placeholder="জিজ্ঞেস করুন: 'CE 402 পরীক্ষায় কি পড়ব?'"
+        autocomplete="off"
+      />
+      <button class="chat-send-btn" type="submit" aria-label="Send message">➤</button>
+    </form>
+  </section>
+
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>
