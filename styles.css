@@ -209,14 +209,15 @@ body {
 /* Hero */
 .hero {
   position: relative;
+  z-index: 20;
   padding: 64px 0 48px;
-  overflow: hidden;
   border-bottom: 1px solid var(--border);
 }
 
 .hero-grid-bg {
   position: absolute;
   inset: 0;
+  overflow: hidden;
   background-image:
     linear-gradient(to right, rgba(29, 78, 216, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(29, 78, 216, 0.05) 1px, transparent 1px);
@@ -306,6 +307,7 @@ body {
 /* Search */
 .search-wrap {
   position: relative;
+  z-index: 60;
   max-width: 680px;
   margin: 0 auto;
 }
@@ -716,17 +718,40 @@ body {
 }
 
 .modal-body {
+  flex: 1 1 auto;
+  min-height: 0;
   padding: 18px 22px;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  overscroll-behavior: contain;
+  display: block;
 }
 
 .folder-block {
   border: 1px solid var(--border);
   border-radius: 12px;
-  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.folder-block:last-child {
+  margin-bottom: 0;
+}
+
+.curator-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.84rem;
+  margin-bottom: 22px;
+  box-shadow: var(--shadow-sm);
+}
+
+.curator-pill strong {
+  color: var(--text);
 }
 
 .folder-summary {
